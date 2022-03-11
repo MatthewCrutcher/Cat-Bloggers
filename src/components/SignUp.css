@@ -1,0 +1,34 @@
+body {
+  background-image: url(../../public/images/Background\ Desktop\ Sign\ Up.png);
+  background-size: 100%, 100%;
+  background-color: #e57222;
+
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    background: linear-gradient(
+      0deg,
+      #e27022 0%,
+      rgba(244, 170, 65, 0.5) 90.21%
+    );
+    background-repeat: no-repeat;
+    background-color: #e27022;
+  }
+}
+
+.signUpForm {
+  background-color: white;
+  width: 770px;
+  height: fit-content;
+  margin-top: 72px;
+  margin-left: 100px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.formTitle {
+  font-size: 48px;
+  text-align: center;
+}
