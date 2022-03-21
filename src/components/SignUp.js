@@ -9,13 +9,32 @@ export default class SignUp extends Component {
       <div className="signUpForm">
         <form>
           <p className="formTitle">Sign Up</p>
-          <div style={{ "padding-bottom": "3%" }}>
+          <div style={{}}>
             <input className="emailInput" placeholder="Email"></input>
           </div>
           <div>
-            <input className="firstNameInput" placeholder="First Name" />
-            <input className="lastNameInput" placeholder="Last Name" />
+            <input
+              className="firstNameInput smallerScreen"
+              placeholder="First Name"
+            />
+            <input
+              className="lastNameInput smallerScreen"
+              placeholder="Last Name"
+            />
           </div>
+          <div>
+            <input
+              className="firstNameInput smallerScreen"
+              placeholder="Password"
+              type="password"
+            />
+            <input
+              className="lastNameInput smallerScreen"
+              placeholder="Confirm Password"
+              type="password"
+            />
+          </div>
+          <button className='signUpButton'>Submit</button>
         </form>
       </div>
     );
