@@ -6,7 +6,7 @@ import "./SignUp.css";
 export default class SignUp extends Component {
   render() {
     return (
-      <div>
+      <div className="signUpBackground">
         <div className="signUpForm">
           <form>
             <p className="formTitle">Sign Up</p>

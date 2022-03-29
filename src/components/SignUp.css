@@ -1,7 +1,12 @@
-body {
+.signUpBackground {
   background-image: url(../../public/images/Background\ Desktop\ Sign\ Up.png);
   background-size: 100%, 100%;
-  background-color: #e57222;
+  background-color: #e27022;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 
   background-repeat: no-repeat;
 }
@@ -199,6 +204,10 @@ h1 {
 }
 
 @media screen and (max-width: 800px) {
+  .signUpBackground {
+    background-image: none;
+  }
+
   .signUpForm {
     background-color: white;
     width: 80%;
