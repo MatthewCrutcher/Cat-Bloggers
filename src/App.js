@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import "./App.css";
 import Login from "./components/Login";
+import Feed from "./components/Feed";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         </Routes>
         <Routes>
           <Route exact path="/login" element={<Login />} />
+        </Routes>
+        <Routes>
+          <Route exact path="/feed" element={<Feed />} />
         </Routes>
       </div>
     </Router>

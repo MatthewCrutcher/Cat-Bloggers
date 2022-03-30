@@ -36,7 +36,7 @@ export class Login extends Component {
                 Login
               </button>
 
-              <button style={{}} className="loginButton smallerScreenLogin">
+              <button className="loginButton smallerScreenLogin">
                 Sign Up
               </button>
               <p className="textUnderButton">
