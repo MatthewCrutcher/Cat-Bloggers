@@ -18,7 +18,7 @@ function Navbar() {
         <span className="bar"></span>
         <span className="bar"></span>
       </a>
-      <div className={active ? "navbarLinks" : "navbarLinks active"}>
+      <div className={active ? "navbarLinks active" : "navbarLinks"}>
         <ul>
           <li>
             <a href="#">Logout</a>
