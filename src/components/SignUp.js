@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import users from "../server/server";
+import EmailDuplication from "./EmailDuplication";
 
 //Styling files
 import "./SignUp.css";
@@ -8,20 +9,45 @@ export default class SignUp extends React.Component {
   constructor() {
     super();
     this.state = {
-      email: "",
-      firstName: "",
-      lastName: "",
-      password: "",
+      values: {
+        email: "",
+        firstName: "",
+        lastName: "",
+        password: "",
+      },
+      emailAlreadyExists: "all good",
+      emailsInDB: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // Gets data and sets emailsInDB state
+  componentDidMount() {
+    const emailApiCall = async () => {
+      try {
+        const res = await users.get("/users");
+        const response = res.data;
+        this.setState({ emailsInDB: response });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    emailApiCall();
+  }
+  handleEmailDuplication() {}
+
   handleSubmit(event) {
-    users.post("/users", this.state).then((res) => {
-      console.log(res);
+    this.state.emailsInDB.map((val) => {
+      if (this.state.values.email === val.email) {
+        event.preventDefault();
+        console.log("Cannot create user");
+        throw this.setState({ emailAlreadyExists: "Email Already Exists" });
+      }
     });
 
-    event.preventDefault();
+    users.post("/users", this.state.values).then((res) => {
+      console.log(res);
+    });
   }
 
   render() {
@@ -38,9 +64,15 @@ export default class SignUp extends React.Component {
                 className="emailInput"
                 placeholder="Email"
                 type="email"
-                value={this.state.email}
+                required
+                value={this.state.values.email}
                 onChange={(event) => {
-                  this.setState({ email: event.target.value });
+                  this.setState((prevState) => ({
+                    values: {
+                      ...prevState.values,
+                      email: event.target.value,
+                    },
+                  }));
                 }}
               />
             </div>
@@ -49,18 +81,28 @@ export default class SignUp extends React.Component {
                 className="firstNameInput smallerScreen"
                 placeholder="First Name"
                 type="text"
-                value={this.state.firstName}
+                value={this.state.values.firstName}
                 onChange={(event) => {
-                  this.setState({ firstName: event.target.value });
+                  this.setState((prevState) => ({
+                    values: {
+                      ...prevState.values,
+                      firstName: event.target.value,
+                    },
+                  }));
                 }}
               />
               <input
                 className="lastNameInput smallerScreen"
                 placeholder="Last Name"
                 type="text"
-                value={this.state.lastName}
+                value={this.state.values.lastName}
                 onChange={(event) => {
-                  this.setState({ lastName: event.target.value });
+                  this.setState((prevState) => ({
+                    values: {
+                      ...prevState.values,
+                      lastName: event.target.value,
+                    },
+                  }));
                 }}
               />
             </div>
@@ -69,9 +111,14 @@ export default class SignUp extends React.Component {
                 className="firstNameInput smallerScreen"
                 placeholder="Password"
                 type="password"
-                value={this.state.password}
+                value={this.state.values.password}
                 onChange={(event) => {
-                  this.setState({ password: event.target.value });
+                  this.setState((prevState) => ({
+                    values: {
+                      ...prevState.values,
+                      password: event.target.value,
+                    },
+                  }));
                 }}
               />
               <input
@@ -85,10 +132,15 @@ export default class SignUp extends React.Component {
             </div>
           </form>
         </div>
+        <div>{this.state.emailAlreadyExists}</div>
         <div className="sloganText">
           <h1>Purrfect for cat lovers!</h1>
         </div>
       </div>
     );
   }
+}
+
+function checkDupliate(array, value) {
+  return array.some((arrayValue) => value === arrayValue);
 }

@@ -1,3 +1,7 @@
+.error {
+  color: #2cca73;
+}
+
 .signUpBackground {
   background-image: url(../../public/images/Background\ Desktop\ Sign\ Up.png);
   background-size: 100%, 100%;

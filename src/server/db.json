@@ -8,18 +8,11 @@
       "password": "123456"
     },
     {
-      "email": "matthew.crutcher@hotmail.com",
-      "firstName": "",
-      "lastName": "",
-      "password": "",
-      "id": 2
-    },
-    {
-      "email": "matthew.crutcher@hotmail.com",
-      "firstName": "Matthew",
+      "id": 1,
+      "email": "maka@hotmail.com",
+      "firstName": "Maka",
       "lastName": "Crutcher",
-      "password": "123",
-      "id": 3
+      "password": "123456"
     }
   ]
 }
