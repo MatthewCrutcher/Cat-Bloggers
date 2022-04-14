@@ -15,8 +15,9 @@ export default class SignUp extends React.Component {
         lastName: "",
         password: "",
       },
-      emailAlreadyExists: "all good",
+      error: "all good",
       emailsInDB: [],
+      confirmPassword: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -41,9 +42,14 @@ export default class SignUp extends React.Component {
       if (this.state.values.email === val.email) {
         event.preventDefault();
         console.log("Cannot create user");
-        throw this.setState({ emailAlreadyExists: "Email Already Exists" });
+        throw this.setState({ error: "Email Already Exists" });
       }
     });
+    if (this.state.values.password !== this.state.confirmPassword) {
+      event.preventDefault();
+      console.log("Do Not Eqaul");
+      throw this.setState({ error: "Passwords do not match" });
+    }
 
     users.post("/users", this.state.values).then((res) => {
       console.log(res);
@@ -81,6 +87,7 @@ export default class SignUp extends React.Component {
                 className="firstNameInput smallerScreen"
                 placeholder="First Name"
                 type="text"
+                required
                 value={this.state.values.firstName}
                 onChange={(event) => {
                   this.setState((prevState) => ({
@@ -111,6 +118,7 @@ export default class SignUp extends React.Component {
                 className="firstNameInput smallerScreen"
                 placeholder="Password"
                 type="password"
+                required
                 value={this.state.values.password}
                 onChange={(event) => {
                   this.setState((prevState) => ({
@@ -125,6 +133,10 @@ export default class SignUp extends React.Component {
                 className="lastNameInput smallerScreen"
                 placeholder="Confirm Password"
                 type="password"
+                required
+                onChange={(event) => {
+                  this.setState({ confirmPassword: event.target.value });
+                }}
               />
             </div>
             <div style={{ textAlign: "center", margin: "auto" }}>
@@ -139,8 +151,4 @@ export default class SignUp extends React.Component {
       </div>
     );
   }
-}
-
-function checkDupliate(array, value) {
-  return array.some((arrayValue) => value === arrayValue);
 }
