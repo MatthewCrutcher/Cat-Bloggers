@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import users from "../server/server";
-import EmailDuplication from "./EmailDuplication";
 
 //Styling files
 import "./SignUp.css";
+import ErrorLabel from "./ErrorLabel";
 
 export default class SignUp extends React.Component {
   constructor() {
@@ -15,7 +15,7 @@ export default class SignUp extends React.Component {
         lastName: "",
         password: "",
       },
-      error: "all good",
+      error: "",
       emailsInDB: [],
       confirmPassword: "",
     };
@@ -142,9 +142,14 @@ export default class SignUp extends React.Component {
             <div style={{ textAlign: "center", margin: "auto" }}>
               <button className="signUpButton">Submit</button>
             </div>
+            <div
+              className={this.state.error !== "" ? "errorLabel" : "displayNone"}
+            >
+              <ErrorLabel errorLabel={this.state.error} />
+            </div>
           </form>
         </div>
-        <div>{this.state.emailAlreadyExists}</div>
+
         <div className="sloganText">
           <h1>Purrfect for cat lovers!</h1>
         </div>
