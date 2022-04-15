@@ -68,6 +68,19 @@
   margin-left: 27.5%;
 }
 
+.errorLabel {
+  text-align: center;
+  margin: 4%;
+  background: rgba(255, 0, 0, 0.31);
+  border-radius: 15px;
+  padding: 3%;
+  font-size: 1.4em;
+}
+
+.displayNone {
+  display: none;
+}
+
 @media screen and (max-width: 850px) {
   .loginForm {
     position: absolute;

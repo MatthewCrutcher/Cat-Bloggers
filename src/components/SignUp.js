@@ -35,7 +35,6 @@ export default class SignUp extends React.Component {
     };
     emailApiCall();
   }
-  handleEmailDuplication() {}
 
   handleSubmit(event) {
     this.state.emailsInDB.map((val) => {
@@ -53,6 +52,7 @@ export default class SignUp extends React.Component {
 
     users.post("/users", this.state.values).then((res) => {
       console.log(res);
+      window.location.href = "http://localhost:3000/feed";
     });
   }
 
