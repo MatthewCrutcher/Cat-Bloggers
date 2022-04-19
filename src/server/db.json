@@ -20,6 +20,13 @@
       "lastName": "Crutcher",
       "password": "",
       "id": 2
+    },
+    {
+      "email": "dare.2L@hotmail.com",
+      "firstName": "Dare",
+      "lastName": "2L",
+      "password": "Sippy2L",
+      "id": 3
     }
   ]
 }

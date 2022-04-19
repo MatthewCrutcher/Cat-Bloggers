@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import users from "../server/server";
 import ErrorLabel from "./ErrorLabel";
+import { Link } from "react-router-dom";
 
 //Styling files
 import "./Login.css";
@@ -90,10 +91,12 @@ export class Login extends Component {
               >
                 Login
               </button>
+              <Link to="/signup">
+                <button className="loginButton smallerScreenLogin">
+                  Sign Up
+                </button>
+              </Link>
 
-              <button className="loginButton smallerScreenLogin">
-                Sign Up
-              </button>
               <p className="textUnderButton">
                 Don't have an account? Sign up now.
               </p>
