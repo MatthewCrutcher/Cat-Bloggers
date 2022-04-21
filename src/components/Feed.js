@@ -1,28 +1,46 @@
 import React, { Component } from "react";
+import post from "../server/server";
 
 //Navbar import
 import Navbar from "./Navbar";
 //Styling
 import "./Feed.css";
 import ErrorLabel from "./ErrorLabel";
+import MappingFeed from "./MappingFeed";
 
 export class Feed extends Component {
   constructor() {
     super();
     this.state = {
-      post: "",
+      values: {
+        text: "",
+      },
       error: "",
+      postsInDB: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  componentDidMount() {
+    try {
+      const postApiCall = async () => {
+        const res = await post.get("/post");
+        this.setState({ postsInDB: res.data });
+      };
+      postApiCall();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   handleSubmit(event) {
-    event.preventDefault();
-    if (this.state.post === "") {
+    if (this.state.values.post === "") {
+      event.preventDefault();
       this.setState({ error: "You must enter text!" });
     } else {
-      event.preventDefault();
-      console.log("Post created");
-      this.setState({ error: "" });
+      post.post("/post", this.state.values).then((res) => {
+        console.log(res);
+      });
     }
   }
   render() {
@@ -38,7 +56,12 @@ export class Feed extends Component {
               placeholder="What did your cat do today?..."
               type="text"
               onChange={(event) => {
-                this.setState({ post: event.target.value });
+                this.setState((prevState) => ({
+                  values: {
+                    ...prevState.values,
+                    post: event.target.value,
+                  },
+                }));
               }}
             />
             <button className="postButton">Post</button>
@@ -50,9 +73,7 @@ export class Feed extends Component {
             <ErrorLabel errorLabel={this.state.error} />
           </div>
           <div className="userPost">
-            <h4>User's Name</h4>
-            <p>Users post</p>
-            <h5>1/04/2022</h5>
+            <MappingFeed postsState={this.state.postsInDB} />
           </div>
         </div>
       </div>

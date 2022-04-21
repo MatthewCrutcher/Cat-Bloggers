@@ -28,5 +28,15 @@
       "password": "Sippy2L",
       "id": 3
     }
+  ],
+  "post": [
+    {
+      "text": "Example text",
+      "id": 1
+    },
+    {
+      "text": "Tiger slept",
+      "id": 2
+    }
   ]
 }

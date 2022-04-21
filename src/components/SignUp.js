@@ -46,7 +46,7 @@ export default class SignUp extends React.Component {
     });
     if (this.state.values.password !== this.state.confirmPassword) {
       event.preventDefault();
-      console.log("Do Not Eqaul");
+      console.log("Do Not Equal");
       throw this.setState({ error: "Passwords do not match" });
     }
 
