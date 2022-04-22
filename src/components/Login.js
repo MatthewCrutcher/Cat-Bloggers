@@ -107,6 +107,7 @@ export class Login extends Component {
               <ErrorLabel errorLabel={this.state.error} />
             </div>
           </form>
+          <div>{this.message}</div>
         </div>
       </div>
     );

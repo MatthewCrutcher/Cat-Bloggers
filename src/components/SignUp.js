@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import users from "../server/server";
-
+import { v4 as uuidv4 } from "uuid";
 //Styling files
 import "./SignUp.css";
 import ErrorLabel from "./ErrorLabel";
@@ -14,6 +14,7 @@ export default class SignUp extends React.Component {
         firstName: "",
         lastName: "",
         password: "",
+        id: uuidv4(),
       },
       error: "",
       emailsInDB: [],

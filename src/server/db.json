@@ -27,16 +27,32 @@
       "lastName": "2L",
       "password": "Sippy2L",
       "id": 3
+    },
+    {
+      "email": "user@gmail.com",
+      "firstName": "Matthew",
+      "lastName": "Crutcher",
+      "password": "123",
+      "id": 4
+    },
+    {
+      "email": "Max@hotmail.com",
+      "firstName": "Max",
+      "lastName": "Prime",
+      "password": "1",
+      "id": "8b0935d0-d572-4803-9f24-dec7ab56036c"
     }
   ],
   "post": [
     {
       "text": "Example text",
-      "id": 1
+      "id": 1,
+      "userId": 1
     },
     {
       "text": "Tiger slept",
-      "id": 2
+      "id": 2,
+      "userId": 4
     }
   ]
 }
