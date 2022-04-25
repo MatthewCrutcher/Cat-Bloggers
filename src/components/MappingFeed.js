@@ -3,6 +3,7 @@ import users from "../server/server";
 
 const MappingFeed = (props) => {
   const [Users, setUsers] = useState([]);
+  const [LoggedIn, setLoggedIn] = useState(1);
 
   useEffect(() => {
     const usersApiCall = async () => {
@@ -34,6 +35,9 @@ const MappingFeed = (props) => {
         </h4>
         <p>{val.text}</p>
         <h5>25/07/2001</h5>
+        <div className={LoggedIn === val.userId ? "postButton" : null}>
+          EDITDELETE
+        </div>
       </div>
     );
   });

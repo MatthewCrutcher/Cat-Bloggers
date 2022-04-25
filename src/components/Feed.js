@@ -71,6 +71,7 @@ export class Feed extends Component {
             className={this.state.error !== "" ? "errorLabel" : "displayNone"}
           >
             <ErrorLabel errorLabel={this.state.error} />
+            <div>EDITDELETE</div>
           </div>
           <div className="userPost">
             <MappingFeed postsState={this.state.postsInDB} />
