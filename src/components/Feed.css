@@ -23,6 +23,7 @@
   font-size: 24px;
   border-width: 0px;
   margin-top: 250px;
+  transition-duration: 0.4s;
 }
 
 .userPost {
@@ -51,6 +52,27 @@
 
 .userPost h5 {
   margin-left: 80%;
+}
+
+.deleteButton {
+  background: rgb(255, 116, 116);
+  box-shadow: 0px 6px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  width: 200px;
+  height: 50px;
+  font-size: 24px;
+  border-width: 0px;
+  margin-top: 25px;
+  transition-duration: 0.4s;
+}
+
+.deleteButton:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+.deleteButtonNull {
+  display: none;
 }
 
 @media screen and (max-width: 1250px) {

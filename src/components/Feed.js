@@ -14,6 +14,7 @@ export class Feed extends Component {
     this.state = {
       values: {
         text: "",
+        userId: 1, //Needs to be replaced with original
       },
       error: "",
       postsInDB: [],
@@ -34,12 +35,13 @@ export class Feed extends Component {
   }
 
   handleSubmit(event) {
-    if (this.state.values.post === "") {
+    if (this.state.values.text === "") {
       event.preventDefault();
       this.setState({ error: "You must enter text!" });
     } else {
       post.post("/post", this.state.values).then((res) => {
         console.log(res);
+        window.location.reload();
       });
     }
   }
@@ -59,7 +61,7 @@ export class Feed extends Component {
                 this.setState((prevState) => ({
                   values: {
                     ...prevState.values,
-                    post: event.target.value,
+                    text: event.target.value,
                   },
                 }));
               }}
@@ -71,7 +73,6 @@ export class Feed extends Component {
             className={this.state.error !== "" ? "errorLabel" : "displayNone"}
           >
             <ErrorLabel errorLabel={this.state.error} />
-            <div>EDITDELETE</div>
           </div>
           <div className="userPost">
             <MappingFeed postsState={this.state.postsInDB} />

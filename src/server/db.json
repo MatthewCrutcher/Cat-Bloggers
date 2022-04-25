@@ -43,16 +43,5 @@
       "id": "8b0935d0-d572-4803-9f24-dec7ab56036c"
     }
   ],
-  "post": [
-    {
-      "text": "Example text",
-      "id": 1,
-      "userId": 1
-    },
-    {
-      "text": "Tiger slept",
-      "id": 2,
-      "userId": 4
-    }
-  ]
+  "post": []
 }
