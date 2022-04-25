@@ -14,7 +14,7 @@ export class Feed extends Component {
     this.state = {
       values: {
         text: "",
-        userId: 1, //Needs to be replaced with original
+        userId: 1, //Needs to be replaced for real logged in user
       },
       error: "",
       postsInDB: [],

@@ -5,6 +5,8 @@ import post from "../server/server";
 const MappingFeed = (props) => {
   const [Users, setUsers] = useState([]);
   const [LoggedIn, setLoggedIn] = useState(1);
+  const [EditPost, setEditPost] = useState("");
+  const [ShowInput, setShowInput] = useState(false);
 
   useEffect(() => {
     const usersApiCall = async () => {
@@ -25,12 +27,17 @@ const MappingFeed = (props) => {
     });
   };
 
+  const editPost = (id) => {
+    post.put(`/put/${id}`, EditPost).then((res) => {
+      console.log(res);
+    });
+  };
+
   const mergeObjects = props.postsState.map((val) => {
     var merge = {};
     Users.map((value) => {
       if (val.userId === value.id) {
         merge = {
-          ...merge,
           firstName: value.firstName,
           lastName: value.lastName,
         };
@@ -45,12 +52,26 @@ const MappingFeed = (props) => {
         <h5>25/07/2001</h5>
         <button
           className={
-            LoggedIn === val.userId ? "deleteButton" : "deleteButtonNull"
+            LoggedIn === val.userId ? "deleteButton" : "deleteButtonNone"
           }
           onClick={() => deletePost(val.id)}
         >
           DELETE
         </button>
+        <button
+          className={LoggedIn === val.userId ? "editButton" : "editButtonNone"}
+          onClick={() => setShowInput((prevState) => !prevState)}
+        >
+          EDIT
+        </button>
+        <div className={ShowInput === true ? "showInput" : "showInputNone"}>
+          <input
+            onChange={(event) => {
+              setEditPost(event.target.value);
+            }}
+          />
+          <button onClick={() => editPost(val.id)}>CHANGE</button>
+        </div>
       </div>
     );
   });

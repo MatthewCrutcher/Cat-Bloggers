@@ -43,5 +43,16 @@
       "id": "8b0935d0-d572-4803-9f24-dec7ab56036c"
     }
   ],
-  "post": []
+  "post": [
+    {
+      "text": "Tiger Slept",
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "text": "HEllo",
+      "userId": 4,
+      "id": 3
+    }
+  ]
 }
