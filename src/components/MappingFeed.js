@@ -2,29 +2,43 @@ import React, { useEffect, useState } from "react";
 import users from "../server/server";
 
 const MappingFeed = (props) => {
-  const [users, setUsers] = useState([]);
+  const [Users, setUsers] = useState([]);
+
   useEffect(() => {
-    try {
-      const usersApiCall = async () => {
+    const usersApiCall = async () => {
+      try {
         const res = await users.get("/users");
         setUsers(res.data);
-      };
-      usersApiCall();
-    } catch (error) {
-      console.log(error);
-    }
-  });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    usersApiCall();
+  }, []);
 
-  const renderFeed = props.postsState.map((val) => {
+  const mergeObjects = props.postsState.map((val) => {
+    var merge = {};
+    Users.map((value) => {
+      if (val.userId === value.id) {
+        merge = {
+          ...merge,
+          firstName: value.firstName,
+          lastName: value.lastName,
+        };
+      }
+    });
     return (
       <div key={val.id}>
-        <h4>{val.userId}</h4>
+        <h4>
+          {merge.firstName} {merge.lastName}
+        </h4>
         <p>{val.text}</p>
         <h5>25/07/2001</h5>
       </div>
     );
   });
-  return <div>{renderFeed}</div>;
+
+  return <div>{mergeObjects}</div>;
 };
 
 export default MappingFeed;
