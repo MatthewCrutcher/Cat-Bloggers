@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import users from "../server/server";
 import { v4 as uuidv4 } from "uuid";
 //Styling files
@@ -44,6 +44,7 @@ export default class SignUp extends React.Component {
         console.log("Cannot create user");
         throw this.setState({ error: "Email Already Exists" });
       }
+      return null;
     });
     if (this.state.values.password !== this.state.confirmPassword) {
       event.preventDefault();

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 //Styling
 import "./Navbar.css";
 
@@ -13,21 +14,21 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbarLogo" />
-      <a href="#" className="toggleButton" onClick={toggleActive}>
+      <div className="toggleButton" onClick={toggleActive}>
         <span className="bar"></span>
         <span className="bar"></span>
         <span className="bar"></span>
-      </a>
+      </div>
       <div className={active ? "navbarLinks active" : "navbarLinks"}>
         <ul>
           <li>
-            <a href="#">Logout</a>
+            <a href="/">Logout</a>
           </li>
           <li>
-            <a href="#">Logout</a>
+            <a href="/">Logout</a>
           </li>
           <li>
-            <a href="#">Logout</a>
+            <a href="/">Logout</a>
           </li>
         </ul>
       </div>

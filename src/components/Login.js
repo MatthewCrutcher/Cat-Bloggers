@@ -40,6 +40,7 @@ export class Login extends Component {
         this.setState({ emailMatches: val.email });
         this.setState({ userPasswordInDB: val.password });
       }
+      return null;
     });
     if (
       this.state.emailMatches === "" ||

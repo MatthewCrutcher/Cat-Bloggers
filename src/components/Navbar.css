@@ -45,6 +45,10 @@
   height: 21px;
 }
 
+.toggleButton :hover {
+  cursor: pointer;
+}
+
 .bar {
   height: 3px;
   width: 100%;
