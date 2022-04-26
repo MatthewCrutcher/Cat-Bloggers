@@ -5,7 +5,11 @@ import post from "../server/server";
 const MappingFeed = (props) => {
   const [Users, setUsers] = useState([]);
   const [LoggedIn, setLoggedIn] = useState(1);
-  const [EditPost, setEditPost] = useState("");
+  const [EditPost, setEditPost] = useState({
+    text: "",
+    id: 1,
+    userId: LoggedIn,
+  });
   const [ShowInput, setShowInput] = useState(false);
 
   useEffect(() => {
@@ -28,7 +32,7 @@ const MappingFeed = (props) => {
   };
 
   const editPost = (id) => {
-    post.put(`/put/${id}`, EditPost).then((res) => {
+    post.put(`/post/${id}`, EditPost).then((res) => {
       console.log(res);
     });
   };
@@ -58,20 +62,6 @@ const MappingFeed = (props) => {
         >
           DELETE
         </button>
-        <button
-          className={LoggedIn === val.userId ? "editButton" : "editButtonNone"}
-          onClick={() => setShowInput((prevState) => !prevState)}
-        >
-          EDIT
-        </button>
-        <div className={ShowInput === true ? "showInput" : "showInputNone"}>
-          <input
-            onChange={(event) => {
-              setEditPost(event.target.value);
-            }}
-          />
-          <button onClick={() => editPost(val.id)}>CHANGE</button>
-        </div>
       </div>
     );
   });
@@ -80,3 +70,18 @@ const MappingFeed = (props) => {
 };
 
 export default MappingFeed;
+
+/* <button
+          className={LoggedIn === val.userId ? "editButton" : "editButtonNone"}
+          onClick={() => setShowInput((prevState) => !prevState)}
+        >
+          EDIT
+        </button>
+        <div className={ShowInput === true ? "showInput" : "showInputNone"}>
+          <input
+            onChange={(event) => {
+              setEditPost({ text: event.target.value });
+            }}
+          />
+          <button onClick={() => editPost(val.id)}>CHANGE</button>
+        </div> */

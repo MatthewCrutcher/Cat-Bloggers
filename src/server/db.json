@@ -45,14 +45,14 @@
   ],
   "post": [
     {
-      "text": "Tiger Slept",
-      "userId": 1,
-      "id": 1
-    },
-    {
       "text": "HEllo",
       "userId": 4,
       "id": 3
+    },
+    {
+      "text": "She is sleeping",
+      "userId": 1,
+      "id": 5
     }
   ]
 }
